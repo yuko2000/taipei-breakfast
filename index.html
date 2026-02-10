@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北必吃早餐 TOP 12</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+            background: #fdf6ec;
+            color: #3a2e1f;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b35, #f7c948);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            margin-top: 12px;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+        }
+
+        .card-header {
+            padding: 20px 24px 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .rank {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .rank.gold   { background: linear-gradient(135deg, #f7c948, #e8a520); }
+        .rank.silver { background: linear-gradient(135deg, #b0b0b0, #8a8a8a); }
+        .rank.bronze { background: linear-gradient(135deg, #cd8032, #a0612b); }
+        .rank.normal { background: linear-gradient(135deg, #ff6b35, #e05525); }
+
+        .card-header h2 {
+            font-size: 1.25rem;
+            color: #2c1e0e;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        .card-body {
+            padding: 0 24px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .info-row .icon {
+            flex-shrink: 0;
+            width: 22px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .info-row .text {
+            color: #5a4a3a;
+        }
+
+        .recommend {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px dashed #e8dcc8;
+        }
+
+        .recommend-label {
+            font-size: 0.78rem;
+            color: #b08850;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: #fff7ee;
+            border: 1px solid #f0d9b5;
+            color: #a0622a;
+            font-size: 0.82rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #b0a090;
+            font-size: 0.85rem;
+            border-top: 1px solid #e8dcc8;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .container { grid-template-columns: 1fr; padding: 20px 14px 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>台北必吃早餐 TOP 12</h1>
+    <p>從米其林推薦到巷弄隱藏美食，一次收藏！</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank gold">1</div>
+            <h2>阜杭豆漿 <span class="badge">米其林必比登</span></h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中正區忠孝東路一段108號2樓（華山市場）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">05:30 - 12:30（週一休息）</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2392-2175</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">厚燒餅夾蛋</span>
+                    <span class="tag">鹹豆漿</span>
+                    <span class="tag">油條</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank silver">2</div>
+            <h2>餵我早餐 The Whale</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大安區信義路四段26號（大安店）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 07:00-13:30；週六日 07:30-14:00</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2700-3657</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">酪梨大早餐</span>
+                    <span class="tag">甜莓手撕雞三明治</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank bronze">3</div>
+            <h2>以馬內利鮮魚湯</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中正區杭州南路一段3號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">07:00 - 14:00（週日休息）</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2351-5378</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">鮮魚湯</span>
+                    <span class="tag">炒米粉</span>
+                    <span class="tag">炒麵</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">4</div>
+            <h2>津津豆漿店</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大同區延平北路四段5號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">04:30 - 11:00</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2597-3129</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">酥脆炸蛋餅</span>
+                    <span class="tag">蘿蔔糕</span>
+                    <span class="tag">燒餅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">5</div>
+            <h2>紅橘子精緻早午餐</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">雙北近20家分店（詳見官網 redorange.com.tw）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">各店不同，詳見官網</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">千層堡</span>
+                    <span class="tag">酥抓餅</span>
+                    <span class="tag">薯泥丹麥餐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">6</div>
+            <h2>阿角紅燒肉</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大同區延平北路二段247巷2號（永樂市場）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">週二~日 08:00-12:30（週一公休）</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">0981-123-034</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">紅燒肉</span>
+                    <span class="tag">透抽</span>
+                    <span class="tag">燙青菜</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">7</div>
+            <h2>秦小姐豆漿店</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市松山區延吉街7-6號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">05:30 - 13:30</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2570-5589</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">獅子頭蛋餅</span>
+                    <span class="tag">豇豆蛋餅</span>
+                    <span class="tag">酥餅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">8</div>
+            <h2>好初早餐</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大安區敦化南路二段265巷8號（敦南店）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 07:15-14:45；週六日 08:00-15:30</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2377-0187</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">一拳排骨三明治</span>
+                    <span class="tag">板橋炸肉餅堡</span>
+                    <span class="tag">炸湯圓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">9</div>
+            <h2>天母豆漿店</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市士林區德行東路264-1號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">週三 05:00-12:00；其他 05:00-14:00</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2838-4411</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">醬燒牛五花蛋餅</span>
+                    <span class="tag">高麗菜蛋餅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">10</div>
+            <h2>達利早餐</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市士林區後港街150-1號（士林後港店）</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 06:00-13:30；週六日 06:00-14:00</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2881-2360</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">黃金軟法套餐</span>
+                    <span class="tag">歐姆蛋套餐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">11</div>
+            <h2>石牌無名手工蛋餅</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市北投區實踐街48巷7號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">06:00 - 11:00（週二公休）</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2821-2516</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">手工蛋餅</span>
+                    <span class="tag">花生湯</span>
+                    <span class="tag">蘿蔔糕</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="rank normal">12</div>
+            <h2>味鼎蛋餅</h2>
+        </div>
+        <div class="card-body">
+            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中山區龍江路21巷3號</span></div>
+            <div class="info-row"><span class="icon">🕐</span><span class="text">05:45 - 13:00</span></div>
+            <div class="info-row"><span class="icon">📞</span><span class="text">02-2772-3685</span></div>
+            <div class="recommend">
+                <div class="recommend-label">招牌推薦</div>
+                <div class="tags">
+                    <span class="tag">醬爆飯糰</span>
+                    <span class="tag">豬扒蛋餅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>資料來源：Klook 客路部落格 ｜ 製作日期：2026/02/10</p>
+</footer>
+
+</body>
+</html>
