@@ -8,428 +8,565 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
-            background: #fdf6ec;
-            color: #3a2e1f;
+            font-family: "Microsoft JhengHei", "Noto Sans TC", -apple-system, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            min-height: 100vh;
         }
 
-        header {
-            background: linear-gradient(135deg, #ff6b35, #f7c948);
-            color: #fff;
-            text-align: center;
-            padding: 60px 20px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -40px;
-            left: -40px;
-            width: 200px;
-            height: 200px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-
-        header h1 {
-            font-size: 2.6rem;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-        }
-
-        header p {
-            margin-top: 12px;
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 28px;
-        }
-
-        .card {
+        /* ===== Navbar ===== */
+        nav {
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.14);
-        }
-
-        .card-header {
-            padding: 20px 24px 12px;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 40px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: space-between;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .rank {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-brand svg { flex-shrink: 0; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #2563eb; }
+
+        .nav-links a.active { color: #2563eb; }
+
+        /* ===== Main wrapper ===== */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px 60px;
+        }
+
+        /* ===== Top card (white panel) ===== */
+        .panel {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        /* ===== Tab bar ===== */
+        .tab-bar {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 8px;
+            overflow-x: auto;
+        }
+
+        .tab-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #9ca3af;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-item:hover { color: #4b5563; }
+
+        .tab-item.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+
+        .tab-item svg { flex-shrink: 0; }
+
+        /* ===== Content area ===== */
+        .content-area {
+            display: flex;
+            gap: 0;
+        }
+
+        .content-left {
+            flex: 1;
+            padding: 32px 36px;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .content-right {
+            width: 320px;
+            padding: 32px 28px;
+            flex-shrink: 0;
+        }
+
+        /* ===== Step headers ===== */
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #2563eb;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        /* ===== Filter pills ===== */
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .filter-pill {
+            padding: 7px 18px;
+            border-radius: 20px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            font-size: 0.85rem;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-pill:hover { border-color: #2563eb; color: #2563eb; }
+
+        .filter-pill.active {
+            background: #eff6ff;
+            border-color: #2563eb;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ===== Store cards ===== */
+        .store-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .store-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.25s;
+            cursor: default;
+        }
+
+        .store-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.1);
+        }
+
+        .store-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .store-rank {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #fff;
             flex-shrink: 0;
         }
 
-        .rank.gold   { background: linear-gradient(135deg, #f7c948, #e8a520); }
-        .rank.silver { background: linear-gradient(135deg, #b0b0b0, #8a8a8a); }
-        .rank.bronze { background: linear-gradient(135deg, #cd8032, #a0612b); }
-        .rank.normal { background: linear-gradient(135deg, #ff6b35, #e05525); }
+        .store-rank.r1 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .store-rank.r2 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+        .store-rank.r3 { background: linear-gradient(135deg, #c2855a, #a16437); }
+        .store-rank.rn { background: #2563eb; }
 
-        .card-header h2 {
-            font-size: 1.25rem;
-            color: #2c1e0e;
+        .store-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1e293b;
         }
 
-        .badge {
+        .store-badge {
             display: inline-block;
-            background: #fff3cd;
-            color: #856404;
-            font-size: 0.72rem;
-            padding: 2px 8px;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 0.7rem;
+            padding: 2px 10px;
             border-radius: 10px;
-            margin-left: 6px;
+            margin-left: 8px;
             font-weight: 600;
-            vertical-align: middle;
         }
 
-        .card-body {
-            padding: 0 24px 20px;
-            flex: 1;
+        .store-info {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 6px;
+            margin-bottom: 14px;
         }
 
-        .info-row {
+        .store-info-row {
             display: flex;
             align-items: flex-start;
             gap: 8px;
-            font-size: 0.92rem;
-            line-height: 1.6;
+            font-size: 0.88rem;
+            color: #64748b;
+            line-height: 1.5;
         }
 
-        .info-row .icon {
+        .store-info-row svg {
             flex-shrink: 0;
-            width: 22px;
-            text-align: center;
-            font-size: 1rem;
+            margin-top: 2px;
         }
 
-        .info-row .text {
-            color: #5a4a3a;
-        }
-
-        .recommend {
-            margin-top: auto;
-            padding-top: 14px;
-            border-top: 1px dashed #e8dcc8;
-        }
-
-        .recommend-label {
-            font-size: 0.78rem;
-            color: #b08850;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-
-        .tags {
+        .store-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
 
-        .tag {
-            background: #fff7ee;
-            border: 1px solid #f0d9b5;
-            color: #a0622a;
-            font-size: 0.82rem;
-            padding: 4px 12px;
-            border-radius: 20px;
+        .store-tag {
+            background: #f0f7ff;
+            border: 1px solid #dbeafe;
+            color: #2563eb;
+            font-size: 0.8rem;
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-weight: 500;
         }
 
+        /* ===== Right sidebar ===== */
+        .sidebar-section {
+            margin-bottom: 32px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-box {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2563eb;
+        }
+
+        .stat-box .label {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .tip-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 16px;
+        }
+
+        .tip-box h4 {
+            font-size: 0.9rem;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+
+        .tip-box p {
+            font-size: 0.82rem;
+            color: #a16207;
+            line-height: 1.6;
+        }
+
+        .district-list {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .district-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            font-size: 0.85rem;
+        }
+
+        .district-row .name { color: #334155; font-weight: 600; }
+        .district-row .count { color: #2563eb; font-weight: 700; }
+
+        /* ===== Footer ===== */
         footer {
             text-align: center;
-            padding: 30px 20px;
-            color: #b0a090;
-            font-size: 0.85rem;
-            border-top: 1px solid #e8dcc8;
+            padding: 28px 20px;
+            color: #94a3b8;
+            font-size: 0.82rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 900px) {
+            .content-area { flex-direction: column; }
+            .content-left { border-right: none; border-bottom: 1px solid #e5e7eb; }
+            .content-right { width: 100%; }
+            nav { padding: 0 16px; }
+            .nav-links { display: none; }
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .container { grid-template-columns: 1fr; padding: 20px 14px 40px; }
+            .main-wrapper { padding: 16px 10px 40px; }
+            .content-left { padding: 20px 16px; }
+            .content-right { padding: 20px 16px; }
+            .tab-item { padding: 12px 14px; font-size: 0.82rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>台北必吃早餐 TOP 12</h1>
-    <p>從米其林推薦到巷弄隱藏美食，一次收藏！</p>
-</header>
+<!-- Navbar -->
+<nav>
+    <a class="nav-brand" href="#">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+        Taipei Breakfast
+    </a>
+    <ul class="nav-links">
+        <li><a href="#" class="active">早餐推薦</a></li>
+        <li><a href="#">依區域</a></li>
+        <li><a href="#">依類型</a></li>
+        <li><a href="#">關於</a></li>
+    </ul>
+</nav>
 
-<div class="container">
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank gold">1</div>
-            <h2>阜杭豆漿 <span class="badge">米其林必比登</span></h2>
+<!-- Main -->
+<div class="main-wrapper">
+    <div class="panel">
+        <!-- Tab bar -->
+        <div class="tab-bar">
+            <div class="tab-item active" onclick="filterAll(this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                全部
+            </div>
+            <div class="tab-item" onclick="filterType(this,'中式')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                中式
+            </div>
+            <div class="tab-item" onclick="filterType(this,'西式')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                西式
+            </div>
+            <div class="tab-item" onclick="filterType(this,'蛋餅')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+                蛋餅專門
+            </div>
+            <div class="tab-item" onclick="filterType(this,'豆漿')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                豆漿店
+            </div>
         </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中正區忠孝東路一段108號2樓（華山市場）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">05:30 - 12:30（週一休息）</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2392-2175</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">厚燒餅夾蛋</span>
-                    <span class="tag">鹹豆漿</span>
-                    <span class="tag">油條</span>
+
+        <div class="content-area">
+            <!-- Left: store list -->
+            <div class="content-left">
+                <div class="step-header">
+                    <div class="step-num">1</div>
+                    <h2>台北必吃早餐 TOP 12</h2>
+                </div>
+
+                <div class="filter-row">
+                    <span class="filter-pill active" onclick="filterDistrict(this,'all')">全部地區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'中正區')">中正區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'大安區')">大安區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'大同區')">大同區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'松山區')">松山區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'士林區')">士林區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'北投區')">北投區</span>
+                    <span class="filter-pill" onclick="filterDistrict(this,'中山區')">中山區</span>
+                </div>
+
+                <div class="store-list" id="storeList"></div>
+            </div>
+
+            <!-- Right: sidebar -->
+            <div class="content-right">
+                <div class="sidebar-section">
+                    <div class="step-header">
+                        <div class="step-num">2</div>
+                        <h2>快速統計</h2>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-box"><div class="num">12</div><div class="label">精選店家</div></div>
+                        <div class="stat-box"><div class="num">8</div><div class="label">涵蓋區域</div></div>
+                        <div class="stat-box"><div class="num">1</div><div class="label">米其林推薦</div></div>
+                        <div class="stat-box"><div class="num">5:00</div><div class="label">最早營業</div></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="step-header">
+                        <div class="step-num">3</div>
+                        <h2>各區店家數</h2>
+                    </div>
+                    <div class="district-list">
+                        <div class="district-row"><span class="name">大安區</span><span class="count">3 間</span></div>
+                        <div class="district-row"><span class="name">大同區</span><span class="count">2 間</span></div>
+                        <div class="district-row"><span class="name">中正區</span><span class="count">2 間</span></div>
+                        <div class="district-row"><span class="name">士林區</span><span class="count">2 間</span></div>
+                        <div class="district-row"><span class="name">松山區</span><span class="count">1 間</span></div>
+                        <div class="district-row"><span class="name">北投區</span><span class="count">1 間</span></div>
+                        <div class="district-row"><span class="name">中山區</span><span class="count">1 間</span></div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>小提醒</h4>
+                    <p>阜杭豆漿是米其林必比登推薦，建議提早 30 分鐘至 1 小時排隊。多數店家中午前就會收攤，早起才吃得到！</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank silver">2</div>
-            <h2>餵我早餐 The Whale</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大安區信義路四段26號（大安店）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 07:00-13:30；週六日 07:30-14:00</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2700-3657</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">酪梨大早餐</span>
-                    <span class="tag">甜莓手撕雞三明治</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank bronze">3</div>
-            <h2>以馬內利鮮魚湯</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中正區杭州南路一段3號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">07:00 - 14:00（週日休息）</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2351-5378</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">鮮魚湯</span>
-                    <span class="tag">炒米粉</span>
-                    <span class="tag">炒麵</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">4</div>
-            <h2>津津豆漿店</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大同區延平北路四段5號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">04:30 - 11:00</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2597-3129</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">酥脆炸蛋餅</span>
-                    <span class="tag">蘿蔔糕</span>
-                    <span class="tag">燒餅</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">5</div>
-            <h2>紅橘子精緻早午餐</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">雙北近20家分店（詳見官網 redorange.com.tw）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">各店不同，詳見官網</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">千層堡</span>
-                    <span class="tag">酥抓餅</span>
-                    <span class="tag">薯泥丹麥餐</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">6</div>
-            <h2>阿角紅燒肉</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大同區延平北路二段247巷2號（永樂市場）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">週二~日 08:00-12:30（週一公休）</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">0981-123-034</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">紅燒肉</span>
-                    <span class="tag">透抽</span>
-                    <span class="tag">燙青菜</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">7</div>
-            <h2>秦小姐豆漿店</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市松山區延吉街7-6號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">05:30 - 13:30</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2570-5589</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">獅子頭蛋餅</span>
-                    <span class="tag">豇豆蛋餅</span>
-                    <span class="tag">酥餅</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">8</div>
-            <h2>好初早餐</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市大安區敦化南路二段265巷8號（敦南店）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 07:15-14:45；週六日 08:00-15:30</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2377-0187</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">一拳排骨三明治</span>
-                    <span class="tag">板橋炸肉餅堡</span>
-                    <span class="tag">炸湯圓</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">9</div>
-            <h2>天母豆漿店</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市士林區德行東路264-1號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">週三 05:00-12:00；其他 05:00-14:00</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2838-4411</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">醬燒牛五花蛋餅</span>
-                    <span class="tag">高麗菜蛋餅</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">10</div>
-            <h2>達利早餐</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市士林區後港街150-1號（士林後港店）</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">週一~五 06:00-13:30；週六日 06:00-14:00</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2881-2360</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">黃金軟法套餐</span>
-                    <span class="tag">歐姆蛋套餐</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">11</div>
-            <h2>石牌無名手工蛋餅</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市北投區實踐街48巷7號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">06:00 - 11:00（週二公休）</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2821-2516</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">手工蛋餅</span>
-                    <span class="tag">花生湯</span>
-                    <span class="tag">蘿蔔糕</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <div class="rank normal">12</div>
-            <h2>味鼎蛋餅</h2>
-        </div>
-        <div class="card-body">
-            <div class="info-row"><span class="icon">📍</span><span class="text">台北市中山區龍江路21巷3號</span></div>
-            <div class="info-row"><span class="icon">🕐</span><span class="text">05:45 - 13:00</span></div>
-            <div class="info-row"><span class="icon">📞</span><span class="text">02-2772-3685</span></div>
-            <div class="recommend">
-                <div class="recommend-label">招牌推薦</div>
-                <div class="tags">
-                    <span class="tag">醬爆飯糰</span>
-                    <span class="tag">豬扒蛋餅</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <footer>
     <p>資料來源：Klook 客路部落格 ｜ 製作日期：2026/02/10</p>
 </footer>
+
+<script>
+const stores = [
+    { rank:1, cls:"r1", name:"阜杭豆漿", badge:"米其林必比登", addr:"台北市中正區忠孝東路一段108號2樓（華山市場）", time:"05:30 - 12:30（週一休息）", phone:"02-2392-2175", tags:["厚燒餅夾蛋","鹹豆漿","油條"], district:"中正區", type:["中式","豆漿"] },
+    { rank:2, cls:"r2", name:"餵我早餐 The Whale", badge:"", addr:"台北市大安區信義路四段26號（大安店）", time:"週一~五 07:00-13:30；週六日 07:30-14:00", phone:"02-2700-3657", tags:["酪梨大早餐","甜莓手撕雞三明治"], district:"大安區", type:["西式"] },
+    { rank:3, cls:"r3", name:"以馬內利鮮魚湯", badge:"", addr:"台北市中正區杭州南路一段3號", time:"07:00 - 14:00（週日休息）", phone:"02-2351-5378", tags:["鮮魚湯","炒米粉","炒麵"], district:"中正區", type:["中式"] },
+    { rank:4, cls:"rn", name:"津津豆漿店", badge:"", addr:"台北市大同區延平北路四段5號", time:"04:30 - 11:00", phone:"02-2597-3129", tags:["酥脆炸蛋餅","蘿蔔糕","燒餅"], district:"大同區", type:["中式","豆漿","蛋餅"] },
+    { rank:5, cls:"rn", name:"紅橘子精緻早午餐", badge:"", addr:"雙北近20家分店（詳見官網 redorange.com.tw）", time:"各店不同，詳見官網", phone:"", tags:["千層堡","酥抓餅","薯泥丹麥餐"], district:"其他", type:["西式"] },
+    { rank:6, cls:"rn", name:"阿角紅燒肉", badge:"", addr:"台北市大同區延平北路二段247巷2號（永樂市場）", time:"週二~日 08:00-12:30（週一公休）", phone:"0981-123-034", tags:["紅燒肉","透抽","燙青菜"], district:"大同區", type:["中式"] },
+    { rank:7, cls:"rn", name:"秦小姐豆漿店", badge:"", addr:"台北市松山區延吉街7-6號", time:"05:30 - 13:30", phone:"02-2570-5589", tags:["獅子頭蛋餅","豇豆蛋餅","酥餅"], district:"松山區", type:["中式","豆漿","蛋餅"] },
+    { rank:8, cls:"rn", name:"好初早餐", badge:"", addr:"台北市大安區敦化南路二段265巷8號（敦南店）", time:"週一~五 07:15-14:45；週六日 08:00-15:30", phone:"02-2377-0187", tags:["一拳排骨三明治","板橋炸肉餅堡","炸湯圓"], district:"大安區", type:["西式"] },
+    { rank:9, cls:"rn", name:"天母豆漿店", badge:"", addr:"台北市士林區德行東路264-1號", time:"週三 05:00-12:00；其他 05:00-14:00", phone:"02-2838-4411", tags:["醬燒牛五花蛋餅","高麗菜蛋餅"], district:"士林區", type:["中式","豆漿","蛋餅"] },
+    { rank:10, cls:"rn", name:"達利早餐", badge:"", addr:"台北市士林區後港街150-1號（士林後港店）", time:"週一~五 06:00-13:30；週六日 06:00-14:00", phone:"02-2881-2360", tags:["黃金軟法套餐","歐姆蛋套餐"], district:"士林區", type:["西式"] },
+    { rank:11, cls:"rn", name:"石牌無名手工蛋餅", badge:"", addr:"台北市北投區實踐街48巷7號", time:"06:00 - 11:00（週二公休）", phone:"02-2821-2516", tags:["手工蛋餅","花生湯","蘿蔔糕"], district:"北投區", type:["中式","蛋餅"] },
+    { rank:12, cls:"rn", name:"味鼎蛋餅", badge:"", addr:"台北市中山區龍江路21巷3號", time:"05:45 - 13:00", phone:"02-2772-3685", tags:["醬爆飯糰","豬扒蛋餅"], district:"中山區", type:["中式","蛋餅"] },
+];
+
+let currentType = 'all';
+let currentDistrict = 'all';
+
+function renderStores() {
+    const list = document.getElementById('storeList');
+    const filtered = stores.filter(s => {
+        const typeOk = currentType === 'all' || s.type.includes(currentType);
+        const distOk = currentDistrict === 'all' || s.district === currentDistrict;
+        return typeOk && distOk;
+    });
+
+    if (filtered.length === 0) {
+        list.innerHTML = '<div style="text-align:center;padding:40px;color:#94a3b8;">此分類目前沒有店家</div>';
+        return;
+    }
+
+    list.innerHTML = filtered.map(s => `
+        <div class="store-card">
+            <div class="store-top">
+                <div class="store-rank ${s.cls}">${s.rank}</div>
+                <div class="store-name">${s.name}${s.badge ? '<span class="store-badge">' + s.badge + '</span>' : ''}</div>
+            </div>
+            <div class="store-info">
+                <div class="store-info-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>${s.addr}</span>
+                </div>
+                <div class="store-info-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>${s.time}</span>
+                </div>
+                ${s.phone ? `<div class="store-info-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>${s.phone}</span>
+                </div>` : ''}
+            </div>
+            <div class="store-tags">
+                ${s.tags.map(t => `<span class="store-tag">${t}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterAll(el) {
+    currentType = 'all';
+    document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderStores();
+}
+
+function filterType(el, type) {
+    currentType = type;
+    document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderStores();
+}
+
+function filterDistrict(el, district) {
+    currentDistrict = district;
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    renderStores();
+}
+
+renderStores();
+</script>
 
 </body>
 </html>
